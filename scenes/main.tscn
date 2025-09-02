@@ -1,0 +1,179 @@
+[gd_scene load_steps=7 format=3 uid="uid://17qdmu7gy2q0"]
+
+[ext_resource type="Script" uid="uid://bfm1b6vv6fhvy" path="res://scenes/main.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://d2k56jhd4fwog" path="res://scenes/workspace_view.gd" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://1ufd0pr8npn4" path="res://todo.gd" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://xek2ut80se45" path="res://scenes/part_gear_settings.tscn" id="3_tefeu"]
+[ext_resource type="Script" uid="uid://by3d24f8a0x6v" path="res://logic/workspace/workspace_model.gd" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://bx5g6w1odob8n" path="res://logic/workspace/workspace_controller.gd" id="4_tbgi4"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o5qli")
+
+[node name="B1" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="P_top" type="Panel" parent="B1"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="P_mid" type="Panel" parent="B1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="B2" type="BoxContainer" parent="B1/P_mid"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="P_left" type="Panel" parent="B1/P_mid/B2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="P_center" type="Panel" parent="B1/P_mid/B2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+script = ExtResource("2_0wfyh")
+
+[node name="P_right" type="Panel" parent="B1/P_mid/B2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BC" type="BoxContainer" parent="B1/P_mid/B2/P_right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="GC" type="GridContainer" parent="B1/P_mid/B2/P_right/BC"]
+layout_mode = 2
+columns = 3
+
+[node name="btnAxle" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Axle"
+
+[node name="btnGear" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Gear"
+
+[node name="btnLink" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Link"
+
+[node name="btnCam" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Cam"
+
+[node name="btnBelt" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Belt"
+
+[node name="btnClutch" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Clutch"
+
+[node name="btnArm" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Arm"
+
+[node name="btnGround" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Ground"
+
+[node name="btnPort" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Port"
+
+[node name="btnAssy" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Assy"
+
+[node name="btnSpring" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Spring"
+
+[node name="btnBrake" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Brake"
+
+[node name="btnDamper" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Damper"
+
+[node name="btnMass" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Mass"
+
+[node name="btnMotor" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Motor"
+
+[node name="btnGeneva" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Geneva"
+
+[node name="btnDiff" type="Button" parent="B1/P_mid/B2/P_right/BC/GC"]
+layout_mode = 2
+text = "Diff"
+
+[node name="PartGearSettings" parent="B1/P_mid/B2/P_right/BC" instance=ExtResource("3_tefeu")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="P_bot" type="Panel" parent="B1"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="todo" type="Node" parent="."]
+script = ExtResource("3_sugp2")
+
+[node name="logic" type="Node" parent="."]
+
+[node name="workspace" type="Node" parent="logic"]
+
+[node name="controller" type="Node" parent="logic/workspace" node_paths=PackedStringArray("model", "PanelGear")]
+script = ExtResource("4_tbgi4")
+model = NodePath("../model")
+PanelGear = NodePath("../../../B1/P_mid/B2/P_right/BC/PartGearSettings")
+
+[node name="model" type="Node" parent="logic/workspace"]
+script = ExtResource("4_jyhfs")
+
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnAxle" to="logic/workspace/controller" method="_on_btn_axle_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnGear" to="logic/workspace/controller" method="_on_btn_gear_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnLink" to="logic/workspace/controller" method="_on_btn_link_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnCam" to="logic/workspace/controller" method="_on_btn_cam_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnBelt" to="logic/workspace/controller" method="_on_btn_belt_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnClutch" to="logic/workspace/controller" method="_on_btn_clutch_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnArm" to="logic/workspace/controller" method="_on_btn_arm_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnGround" to="logic/workspace/controller" method="_on_btn_ground_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnPort" to="logic/workspace/controller" method="_on_btn_port_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnAssy" to="logic/workspace/controller" method="_on_btn_assy_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnSpring" to="logic/workspace/controller" method="_on_btn_spring_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnBrake" to="logic/workspace/controller" method="_on_btn_brake_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnDamper" to="logic/workspace/controller" method="_on_btn_damper_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnMass" to="logic/workspace/controller" method="_on_btn_mass_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnMotor" to="logic/workspace/controller" method="_on_btn_motor_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnGeneva" to="logic/workspace/controller" method="_on_btn_geneva_pressed"]
+[connection signal="pressed" from="B1/P_mid/B2/P_right/BC/GC/btnDiff" to="logic/workspace/controller" method="_on_btn_diff_pressed"]
+[connection signal="sig_item_added" from="logic/workspace/model" to="B1/P_mid/B2/P_center" method="_on_model_sig_item_added"]

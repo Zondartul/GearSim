@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://xek2ut80se45"]
+
+[ext_resource type="Script" uid="uid://cxwuww28nh8rb" path="res://scenes/part_gear_settings.gd" id="1_twbg5"]
+
+[node name="PartGearSettings" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.244
+anchor_bottom = 0.29
+offset_right = -0.0880127
+offset_bottom = 0.0799866
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_twbg5")
+
+[node name="B" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Label" type="Label" parent="B"]
+layout_mode = 2
+text = "Gear settings"
+horizontal_alignment = 1
+
+[node name="GC" type="GridContainer" parent="B"]
+layout_mode = 2
+columns = 2
+
+[node name="slider_diameter" type="HSlider" parent="B/GC"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 128.0
+step = 2.0
+value = 11.0
+exp_edit = true
+
+[node name="Label2" type="Label" parent="B/GC"]
+layout_mode = 2
+text = "Diameter"
+horizontal_alignment = 1
+
+[node name="slider_depth" type="HSlider" parent="B/GC"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 25.0
+
+[node name="Label3" type="Label" parent="B/GC"]
+layout_mode = 2
+text = "Depth"
+horizontal_alignment = 1
+
+[node name="spinner_teeth" type="SpinBox" parent="B/GC"]
+layout_mode = 2
+value = 12.0
+
+[node name="Label4" type="Label" parent="B/GC"]
+layout_mode = 2
+text = "Teeth"
+horizontal_alignment = 1
+
+[connection signal="value_changed" from="B/GC/slider_diameter" to="." method="_on_slider_diameter_value_changed"]
+[connection signal="value_changed" from="B/GC/slider_depth" to="." method="_on_slider_depth_value_changed"]
+[connection signal="value_changed" from="B/GC/spinner_teeth" to="." method="_on_spinner_teeth_value_changed"]

@@ -1,0 +1,2 @@
+extends ContraptionPart
+class_name PrimitiveCPart
