@@ -21,7 +21,7 @@ func gen_viewmodel():
 	# generate a 2D gear outline
 	var line = viewmodel;
 	line.clear_points();
-	line.width = 0.1;
+	line.width = 1.0;
 	var pitch = 2*PI/float(n_teeth);
 	print("pitch = "+str(pitch))
 	var profile = gen_tooth_profile(pitch, diameter, depth);
