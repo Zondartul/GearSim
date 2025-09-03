@@ -182,10 +182,8 @@ VWorkspace = NodePath("../../../../../B1/P_mid/B2/workspace_view")
 script = ExtResource("8_trceg")
 VWorkspace = NodePath("../../../../../B1/P_mid/B2/workspace_view")
 
-[node name="mouseover" type="Node" parent="logic/workspace/controller/behaviors" node_paths=PackedStringArray("VWorkspace", "n_spatial")]
+[node name="mouseover" type="Node" parent="logic/workspace/controller/behaviors"]
 script = ExtResource("9_a8y0u")
-VWorkspace = NodePath("../../../../../B1/P_mid/B2/workspace_view")
-n_spatial = NodePath("../../spatial")
 
 [node name="model" type="Node" parent="logic/workspace"]
 script = ExtResource("4_jyhfs")

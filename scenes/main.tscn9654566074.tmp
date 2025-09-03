@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://17qdmu7gy2q0"]
+[gd_scene load_steps=10 format=3 uid="uid://17qdmu7gy2q0"]
 
 [ext_resource type="Script" uid="uid://bfm1b6vv6fhvy" path="res://scenes/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://d2k56jhd4fwog" path="res://scenes/workspace_view.gd" id="2_0wfyh"]
@@ -7,11 +7,8 @@
 [ext_resource type="Script" uid="uid://by3d24f8a0x6v" path="res://logic/workspace/workspace_model.gd" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://bx5g6w1odob8n" path="res://logic/workspace/workspace_controller.gd" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://cj4aahufnq0fr" path="res://logic/workspace/spatial.gd" id="6_85g3d"]
-[ext_resource type="Script" uid="uid://djqylfvje8lph" path="res://logic/workspace/behaviors/mouse_drag.gd" id="7_eb6dy"]
 [ext_resource type="Script" uid="uid://cg5a2trf7e5ww" path="res://scenes/sfx.gd" id="7_tipki"]
 [ext_resource type="AudioStream" uid="uid://gbq0gqirpeqd" path="res://res/sfx/putt4.wav" id="8_85g3d"]
-[ext_resource type="Script" uid="uid://dtfkr8y1f537w" path="res://logic/workspace/behaviors/mouse_grab.gd" id="8_trceg"]
-[ext_resource type="Script" uid="uid://up5702ddm01r" path="res://logic/workspace/behaviors/mouseover.gd" id="9_a8y0u"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -51,16 +48,12 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="workspace_view" type="Panel" parent="B1/P_mid/B2" node_paths=PackedStringArray("n_sfx", "n_spatial", "n_mouseover", "n_mouse_drag", "n_mouse_grab")]
+[node name="workspace_view" type="Panel" parent="B1/P_mid/B2" node_paths=PackedStringArray("n_sfx")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 script = ExtResource("2_0wfyh")
 n_sfx = NodePath("../../../../sfx")
-n_spatial = NodePath("../../../../logic/workspace/controller/spatial")
-n_mouseover = NodePath("../../../../logic/workspace/controller/behaviors/mouseover")
-n_mouse_drag = NodePath("../../../../logic/workspace/controller/behaviors/mouse_drag")
-n_mouse_grab = NodePath("../../../../logic/workspace/controller/behaviors/mouse_grab")
 
 [node name="P_right" type="Panel" parent="B1/P_mid/B2"]
 layout_mode = 2
@@ -167,25 +160,9 @@ script = ExtResource("4_tbgi4")
 model = NodePath("../model")
 PanelGear = NodePath("../../../B1/P_mid/B2/P_right/BC/PartGearSettings")
 
-[node name="spatial" type="Node" parent="logic/workspace/controller" node_paths=PackedStringArray("VWorkspace", "CWorkspace")]
+[node name="spatial" type="Node" parent="logic/workspace/controller" node_paths=PackedStringArray("CWorkspace")]
 script = ExtResource("6_85g3d")
-VWorkspace = NodePath("../../../../B1/P_mid/B2/workspace_view")
 CWorkspace = NodePath("..")
-
-[node name="behaviors" type="Node" parent="logic/workspace/controller"]
-
-[node name="mouse_drag" type="Node" parent="logic/workspace/controller/behaviors" node_paths=PackedStringArray("VWorkspace")]
-script = ExtResource("7_eb6dy")
-VWorkspace = NodePath("../../../../../B1/P_mid/B2/workspace_view")
-
-[node name="mouse_grab" type="Node" parent="logic/workspace/controller/behaviors" node_paths=PackedStringArray("VWorkspace")]
-script = ExtResource("8_trceg")
-VWorkspace = NodePath("../../../../../B1/P_mid/B2/workspace_view")
-
-[node name="mouseover" type="Node" parent="logic/workspace/controller/behaviors" node_paths=PackedStringArray("VWorkspace", "n_spatial")]
-script = ExtResource("9_a8y0u")
-VWorkspace = NodePath("../../../../../B1/P_mid/B2/workspace_view")
-n_spatial = NodePath("../../spatial")
 
 [node name="model" type="Node" parent="logic/workspace"]
 script = ExtResource("4_jyhfs")
