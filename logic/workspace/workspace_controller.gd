@@ -4,9 +4,10 @@ extends Node
 
 #quick hax and debug stuff
 @export var PanelGear:Node = null;
+@export var tool:Node = null;
 
 func _on_btn_axle_pressed() -> void:	model.add_part("axle");
-func _on_btn_gear_pressed() -> void:	var gear = model.add_part("gear"); PanelGear.model = gear;
+func _on_btn_gear_pressed() -> void:	tool.set_tool_by_name("place_gear");#var gear = model.add_part("gear"); PanelGear.model = gear;
 func _on_btn_link_pressed() -> void:	model.add_part("link"); 
 func _on_btn_cam_pressed() -> void:		model.add_part("cam"); 
 func _on_btn_belt_pressed() -> void:	model.add_part("belt"); 
