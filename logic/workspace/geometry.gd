@@ -5,6 +5,7 @@ static func gen_circle(line:Line2D):
 	line.clear_points();
 	var n_sides = 32;
 	var r = 1.0;
+	line.width = 1.0;
 	for i in range(n_sides+1):
 		var th = 2*PI*i/float(n_sides);
 		var x = r*cos(th);

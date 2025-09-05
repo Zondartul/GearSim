@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://17qdmu7gy2q0"]
+[gd_scene load_steps=14 format=3 uid="uid://17qdmu7gy2q0"]
 
 [ext_resource type="Script" uid="uid://bfm1b6vv6fhvy" path="res://scenes/main.gd" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://d2k56jhd4fwog" path="res://scenes/workspace_view.gd" id="2_0wfyh"]
@@ -12,7 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://gbq0gqirpeqd" path="res://res/sfx/putt4.wav" id="8_85g3d"]
 [ext_resource type="Script" uid="uid://dtfkr8y1f537w" path="res://logic/workspace/behaviors/mouse_grab.gd" id="8_trceg"]
 [ext_resource type="Script" uid="uid://up5702ddm01r" path="res://logic/workspace/behaviors/mouseover.gd" id="9_a8y0u"]
-[ext_resource type="Script" uid="uid://dhs40wph0pmi6" path="res://logic/workspace/behaviors/mouse_select.gd" id="10_a8y0u"]
 [ext_resource type="Script" uid="uid://bjkecv0lh4n40" path="res://logic/workspace/tools/tool.gd" id="10_trceg"]
 
 [node name="Main" type="Control"]
@@ -53,7 +52,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="workspace_view" type="Panel" parent="B1/P_mid/B2" node_paths=PackedStringArray("n_sfx", "n_spatial", "n_mouseover", "n_mouse_drag", "n_mouse_grab", "n_mouse_select", "n_tool")]
+[node name="workspace_view" type="Panel" parent="B1/P_mid/B2" node_paths=PackedStringArray("n_sfx", "n_spatial", "n_mouseover", "n_mouse_drag", "n_mouse_grab")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -63,8 +62,6 @@ n_spatial = NodePath("../../../../logic/workspace/controller/spatial")
 n_mouseover = NodePath("../../../../logic/workspace/controller/behaviors/mouseover")
 n_mouse_drag = NodePath("../../../../logic/workspace/controller/behaviors/mouse_drag")
 n_mouse_grab = NodePath("../../../../logic/workspace/controller/behaviors/mouse_grab")
-n_mouse_select = NodePath("../../../../logic/workspace/controller/behaviors/mouse_select")
-n_tool = NodePath("../../../../logic/workspace/controller/tool")
 
 [node name="P_right" type="Panel" parent="B1/P_mid/B2"]
 layout_mode = 2
@@ -166,15 +163,15 @@ script = ExtResource("3_sugp2")
 
 [node name="workspace" type="Node" parent="logic"]
 
-[node name="controller" type="Node" parent="logic/workspace" node_paths=PackedStringArray("MWorkspace", "PanelGear", "tool")]
+[node name="controller" type="Node" parent="logic/workspace" node_paths=PackedStringArray("PanelGear", "tool")]
 script = ExtResource("4_tbgi4")
-MWorkspace = NodePath("../model")
 PanelGear = NodePath("../../../B1/P_mid/B2/P_right/BC/PartGearSettings")
 tool = NodePath("tool")
 
-[node name="spatial" type="Node" parent="logic/workspace/controller" node_paths=PackedStringArray("MWorkspace")]
+[node name="spatial" type="Node" parent="logic/workspace/controller" node_paths=PackedStringArray("VWorkspace", "CWorkspace")]
 script = ExtResource("6_85g3d")
-MWorkspace = NodePath("../../model")
+VWorkspace = NodePath("../../../../B1/P_mid/B2/workspace_view")
+CWorkspace = NodePath("..")
 
 [node name="behaviors" type="Node" parent="logic/workspace/controller"]
 
@@ -191,16 +188,10 @@ script = ExtResource("9_a8y0u")
 VWorkspace = NodePath("../../../../../B1/P_mid/B2/workspace_view")
 n_spatial = NodePath("../../spatial")
 
-[node name="mouse_select" type="Node" parent="logic/workspace/controller/behaviors" node_paths=PackedStringArray("n_spatial", "CWorkspace")]
-script = ExtResource("10_a8y0u")
-n_spatial = NodePath("../../spatial")
-CWorkspace = NodePath("../..")
-
-[node name="tool" type="Node" parent="logic/workspace/controller" node_paths=PackedStringArray("VWorkspace", "CWorkspace", "MWorkspace")]
+[node name="tool" type="Node" parent="logic/workspace/controller" node_paths=PackedStringArray("VWorkspace", "CWorkspace")]
 script = ExtResource("10_trceg")
 VWorkspace = NodePath("../../../../B1/P_mid/B2/workspace_view")
 CWorkspace = NodePath("..")
-MWorkspace = NodePath("../../model")
 
 [node name="model" type="Node" parent="logic/workspace"]
 script = ExtResource("4_jyhfs")

@@ -27,6 +27,7 @@ text = "Gear settings"
 horizontal_alignment = 1
 
 [node name="GC" type="GridContainer" parent="B"]
+visible = false
 layout_mode = 2
 columns = 2
 

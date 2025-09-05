@@ -1,6 +1,13 @@
 extends Panel
 
-var model:PartGear;
+var model:PartGear: set = set_model;
+
+func set_model(new_model):
+	model = new_model;
+	if model:
+		$B/GC.show();
+	else:
+		$B/GC.hide();
 
 func _on_slider_diameter_value_changed(_value: float) -> void: write_to_model();
 func _on_slider_depth_value_changed(_value: float) -> void: write_to_model();

@@ -16,17 +16,20 @@ func clear():
 	items = []
 	sig_items_changed.emit(items);
 
-func add_part(partname)->Node:
+func add_part_by_name(partname)->Node:
 	var item = null;
 	match(partname):
-		"gear": item = PartGear.new();
+		"gear": item = add_part(PartGear.new())
 		_ : push_error("unknown or unimplemented partname: ["+str(partname)+"]"); return;
-	new_item(item);
 	return item;
+
+func add_part(part)->Node:
+	new_item(part);
+	return part;
 
 func new_item(node):
 	items.append(node);
-	add_child(node);
+	#add_child(node);
 	sig_item_added.emit(node);
 	sig_items_changed.emit(items);
 	print("workspace_model: new item: "+str(node.name));
